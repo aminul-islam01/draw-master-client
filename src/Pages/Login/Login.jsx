@@ -1,21 +1,58 @@
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit, formState: { errors },} = useForm();
+    const [captchaCode, setCaptchaCode] = useState();
+    const {loginUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+
+    }, []);
 
     const handleLogin = data => {
-        console.log(data)
+        const email = data.email;
+        const password = data.password;
+        console.log(email, password)
+        if (validateCaptcha(captchaCode) == true) {
+            loginUser(email, password)
+                .then(() => {
+                    navigate(from, { replace: true });
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'User login success full',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+        else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Captcha not match',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     }
 
     return (
-        <div className='my-32'>
+        <div className='my-32 bg-gray-100'>
             <div className='md:w-1/2 p-10'>
-                <form onSubmit={handleSubmit(handleLogin)} className='bg-white p-5 shadow-xl'>
-                <h2 className='font-bold text-2xl text-center'>Login</h2>
+                <form onSubmit={handleSubmit(handleLogin)} className='bg-white p-5 shadow-xl rounded-md'>
+                    <h2 className='font-bold text-2xl text-center'>Login</h2>
                     <div className="form-control mb-5">
                         <label className="label">
                             <span className="label-text">Email</span>
@@ -33,15 +70,15 @@ const Login = () => {
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <LoadCanvasTemplate />
+                        </label>
+                        <input onChange={() => setCaptchaCode(event.target.value)} type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" />
+                    </div>
                     <div className="form-control mt-6">
                         <button type="submit" className="btn bg-green-600 hover:bg-green-700">Login</button>
                     </div>
-                    {/* <input {...register('firstName')} />
-                <input {...register('lastName', { required: true })} />
-                {errors.lastName && <p>Last name is required.</p>}
-                <input {...register('age', { pattern: /\d+/ })} />
-                {errors.age && <p>Please enter number for age.</p>} */}
-                    {/* <input type="submit" /> */}
                 </form>
             </div>
         </div>
