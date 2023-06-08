@@ -11,6 +11,7 @@ const Login = () => {
     const {loginUser} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    console.log(captchaCode)
 
     const from = location.state?.from?.pathname || "/";
 
@@ -19,7 +20,9 @@ const Login = () => {
 
     }, []);
 
+
     const handleLogin = data => {
+        console.log(captchaCode)
         const email = data.email;
         const password = data.password;
         console.log(email, password)
@@ -47,7 +50,7 @@ const Login = () => {
             })
         }
     }
-
+    
     return (
         <div className='my-32 bg-gray-100'>
             <div className='md:w-1/2 p-10'>
@@ -74,8 +77,7 @@ const Login = () => {
                         <label className="label">
                             <LoadCanvasTemplate />
                         </label>
-                        <input onChange={() => setCaptchaCode(event.target.value)} type="text" {...register('captcha', { required: true })} placeholder="Type the text above" className="input input-bordered" />
-                        {errors.captcha && <p className='text-red-600'>fill up the captcha code.</p>}
+                        <input onChange={() => setCaptchaCode(event.target.value)}  type="text" placeholder="Type the text above" className="input input-bordered" required />
                     </div>
                     <div className="form-control mt-6">
                         <button type="submit" className="btn bg-green-600 hover:bg-green-700">Login</button>
