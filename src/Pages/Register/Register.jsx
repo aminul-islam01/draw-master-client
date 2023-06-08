@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [error, setError] = useState(false);
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -16,12 +17,15 @@ const Register = () => {
         const email = data.email;
         const password = data.password;
         const confirmPassword = data.confirmPassword;
-
+      
+        if(password !== confirmPassword) {
+            setError(true);
+        }else{
         createUser(email, password)
             .then(result => {
                 const registerUser = result.user;
                 updateUser(registerUser, name, image);
-                const user = { name, email }
+                const user = { name, email, role: 'student' }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -41,7 +45,9 @@ const Register = () => {
                         reset()
                     })
             })
+        }    
     }
+
 
     return (
         <div className="min-h-screen bg-base-200 py-32">
@@ -77,7 +83,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" {...register('password', {
+                            <input type="text" {...register('password', {
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
                                 minLength: 6,
                                 maxLength: 15,
@@ -91,8 +97,8 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Confirm Password</span>
                             </label>
-                            <input type="password" {...register('confirmPassword', {required: true})} placeholder="password" className="input input-bordered" />
-                            {errors.confirmPassword && <p className="text-red-700">confirm password is required</p>}
+                            <input type="text" {...register('confirmPassword', {required: true})} placeholder="password" className="input input-bordered" />
+                            {error && <p className="text-red-700">password and confirm password are not match</p>}
                         </div>
                         <div className="form-control mt-6">
                             <button type="submit" className="btn bg-green-600 hover:bg-green-700">Sign Up</button>

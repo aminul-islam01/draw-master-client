@@ -29,8 +29,8 @@ const Navbar = () => {
                     {navItems}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="ms-auto w-10 h-10 overflow-hidden bg-slate-50 rounded-full">
+                <img src="https://scontent.fdac68-2.fna.fbcdn.net/v/t39.30808-6/345637573_3471271046467565_4598599078050683555_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeF8MXNWL3LW07sov-yIAWL0DGYUC87nlrAMZhQLzueWsBK4ejUILjwkCbjyNJm3hjbTHY9Lr0hE6vCuKhLN_hy-&_nc_ohc=og1DBLrDW8oAX9_KMKE&_nc_zt=23&_nc_ht=scontent.fdac68-2.fna&oh=00_AfByhIctH1KMXaoptNjGK8fZZyNyhi5u7Td3zLwSImhLGw&oe=64871EA7" />
             </div>
         </div>
     );
