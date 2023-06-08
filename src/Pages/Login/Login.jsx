@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors },} = useForm();
@@ -74,11 +74,13 @@ const Login = () => {
                         <label className="label">
                             <LoadCanvasTemplate />
                         </label>
-                        <input onChange={() => setCaptchaCode(event.target.value)} type="text" name="captcha" placeholder="Type the text above" className="input input-bordered" />
+                        <input onChange={() => setCaptchaCode(event.target.value)} type="text" {...register('captcha', { required: true })} placeholder="Type the text above" className="input input-bordered" />
+                        {errors.captcha && <p className='text-red-600'>fill up the captcha code.</p>}
                     </div>
                     <div className="form-control mt-6">
                         <button type="submit" className="btn bg-green-600 hover:bg-green-700">Login</button>
                     </div>
+                    <p className='text-center text-amber-600 mt-4'>New here? <Link to="/register" className='font-bold'>Create a New Account</Link></p>
                 </form>
             </div>
         </div>
