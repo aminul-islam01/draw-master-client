@@ -42,17 +42,17 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             setLoading(false);
 
-            // if(currentUser){
-            //     axios.post('http://localhost:5000/jwt', {email: currentUser.email})
-            //     .then(data =>{
-            //         // console.log(data.data.token) here is token
-            //         localStorage.setItem('access-token', data.data.token)
-            //         setLoading(false);
-            //     })
-            // }
-            // else{
-            //     localStorage.removeItem('access-token')
-            // }
+            if(currentUser){
+                axios.post('http://localhost:5000/jsonwebtoken', {email: currentUser.email})
+                .then(data =>{
+                    // console.log(data.data.token) here is token
+                    localStorage.setItem('access-token', data.data.token)
+                    setLoading(false);
+                })
+            }
+            else{
+                localStorage.removeItem('access-token')
+            }
         })
 
         return () => { unsubscribe() };

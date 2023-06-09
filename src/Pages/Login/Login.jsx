@@ -24,7 +24,6 @@ const Login = () => {
     const handleLogin = data => {
         const email = data.email;
         const password = data.password;
-        console.log(email, password)
         if (validateCaptcha(captchaCode) == true) {
             loginUser(email, password)
                 .then(() => {
