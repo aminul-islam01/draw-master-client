@@ -1,0 +1,73 @@
+[
+    {
+      "className": "Drawing Fundamentals",
+      "image": "https://images.unsplash.com/photo-1582134534988-f8bcfc928273?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RHJhd2luZyUyMEZ1bmRhbWVudGFsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "John Doe",
+      "instructorEmail": "john.doe@example.com",
+      "availableSeat": 15
+    },
+    {
+      "className": "Advanced Portrait Drawing",
+      "image": "https://media.istockphoto.com/id/579749806/vector/corporate-identity-templates.jpg?s=612x612&w=0&k=20&c=hCH_XMt9dpSpdff-6lsoLOSTq1I7QrjrUiYhx4FL0nw=",
+      "instructorName": "Jane Smith",
+      "instructorEmail": "jane.smith@example.com",
+      "availableSeat": 10
+    },
+    {
+      "className": "Watercolor Workshop",
+      "image": "https://images.unsplash.com/photo-1669580142408-a608cb886b1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8V2F0ZXJjb2xvciUyMFdvcmtzaG9wfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "David Johnson",
+      "instructorEmail": "david.johnson@example.com",
+      "availableSeat": 8
+    },
+    {
+      "className": "Pen and Ink Techniques",
+      "image": "https://images.unsplash.com/photo-1522011192057-e3fa8edc734a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8UGVuJTIwYW5kJTIwSW5rJTIwVGVjaG5pcXVlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Emily Wilson",
+      "instructorEmail": "emily.wilson@example.com",
+      "availableSeat": 12
+    },
+    {
+      "className": "Figure Drawing Workshop",
+      "image": "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fEZpZ3VyZSUyMERyYXdpbmclMjBXb3Jrc2hvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Michael Anderson",
+      "instructorEmail": "michael.anderson@example.com",
+      "availableSeat": 10
+    },
+    {
+      "className": "Landscape Painting",
+      "image": "https://plus.unsplash.com/premium_photo-1673514503540-95388063816e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8TGFuZHNjYXBlJTIwUGFpbnRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Sarah Thompson",
+      "instructorEmail": "sarah.thompson@example.com",
+      "availableSeat": 12
+    },
+    {
+      "className": "Comic Book Illustration",
+      "image": "https://images.unsplash.com/photo-1613376023733-0a73315d9b06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q29taWMlMjBCb29rJTIwSWxsdXN0cmF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Robert Davis",
+      "instructorEmail": "robert.davis@example.com",
+      "availableSeat": 10
+    },
+    {
+      "className": "Abstract Art Workshop",
+      "image": "https://plus.unsplash.com/premium_photo-1663047263726-39e7272d893a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QWJzdHJhY3QlMjBBcnQlMjBXb3Jrc2hvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Jennifer Wilson",
+      "instructorEmail": "jennifer.wilson@example.com",
+      "availableSeat": 8
+    },
+    {
+      "className": "Colored Pencil Techniques",
+      "image": "https://images.unsplash.com/photo-1615502731978-f9d0c593d6c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fENvbG9yZWQlMjBQZW5jaWwlMjBUZWNobmlxdWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Daniel Brown",
+      "instructorEmail": "daniel.brown@example.com",
+      "availableSeat": 10
+    },
+    {
+      "className": "Still Life Drawing",
+      "image": "https://images.unsplash.com/photo-1560037324-f764e2b6cd80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fFN0aWxsJTIwTGlmZSUyMERyYXdpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
+      "instructorName": "Laura Johnson",
+      "instructorEmail": "laura.johnson@example.com",
+      "availableSeat": 12
+    }
+]
+  

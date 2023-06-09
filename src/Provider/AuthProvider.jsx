@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -45,7 +46,6 @@ const AuthProvider = ({children}) => {
             if(currentUser){
                 axios.post('http://localhost:5000/jsonwebtoken', {email: currentUser.email})
                 .then(data =>{
-                    // console.log(data.data.token) here is token
                     localStorage.setItem('access-token', data.data.token)
                     setLoading(false);
                 })
