@@ -5,7 +5,7 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('http://localhost:5000/popular-classes')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])

@@ -9,7 +9,7 @@ const Navbar = () => {
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructor">Instructors</Link></li>
-        <li><Link>Classes</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
         <li><Link>Dashboard</Link></li>
        {user? <li onClick={logoutUser}><Link to="/">Logout</Link></li>
        :<li><Link to="/login">Login</Link></li>}
