@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PopularClassCard from "./PopularClassCard";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
@@ -11,7 +12,8 @@ const PopularClasses = () => {
     console.log(classes)
     return (
         <div>
-            <h2>popular class</h2>
+            <SectionTitle subHeading="classes" heading="Our Popular Classes">
+            </SectionTitle>
             <div className="grid gap-8 md:grid-cols-3">
                 {
                     classes.map(singleClass => <PopularClassCard
