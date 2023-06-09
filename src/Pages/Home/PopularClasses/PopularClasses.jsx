@@ -9,12 +9,12 @@ const PopularClasses = () => {
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])
-    console.log(classes)
+    
     return (
         <div>
             <SectionTitle subHeading="classes" heading="Our Popular Classes">
             </SectionTitle>
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
                 {
                     classes.map(singleClass => <PopularClassCard
                         key={singleClass._id}

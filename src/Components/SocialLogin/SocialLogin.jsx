@@ -7,13 +7,13 @@ import Swal from "sweetalert2";
 
 const SocialLogin = () => {
     const { handleGoogleSignIn } = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSignIn = () => {
         handleGoogleSignIn()
             .then((result) => {
                 const loggedUser = result.user;
-                const user = { name: loggedUser.displayName, email: loggedUser.email, role: 'user' }
+                const user = { name: loggedUser?.displayName, image: loggedUser?.photoURL, email: loggedUser?.email, role: 'student' }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {

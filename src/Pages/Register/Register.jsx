@@ -26,7 +26,7 @@ const Register = () => {
                 .then(result => {
                     const registerUser = result.user;
                     updateUser(registerUser, name, image);
-                    const user = { name, email, role: 'student' }
+                    const user = { name, image, email, role: 'student' }
                     fetch('http://localhost:5000/users', {
                         method: 'POST',
                         headers: {

@@ -4,11 +4,10 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
-    const { user, logoutUser, handleGoogleSignIn } = useContext(AuthContext);
+    const { user, logoutUser } = useContext(AuthContext);
    
     const navItems = <>
         <li><Link to="/">Home</Link></li>
-        <li onClick={handleGoogleSignIn}><Link to="/">google</Link></li>
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link>Classes</Link></li>
         <li><Link>Dashboard</Link></li>
