@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookOpen, FaCalendarAlt, FaEnvelope, FaHome, FaListUl, FaShoppingBag, FaShoppingCart, FaUserTie, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const user = {role:'admi'};
     return (
         // <div className="drawer drawer-mobile">
         //     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -41,9 +41,15 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-yellow-400 text-base-content">
-                    <li><NavLink to="/dashboard/home"><FaHome></FaHome> ADMIN HOME</NavLink></li>
+                    {user.role === 'admin' && <> 
+                    <li><NavLink to="/dashboard/admin-home"><FaHome></FaHome> ADMIN HOME</NavLink></li>
                     <li><NavLink to="/dashboard/manage-classes"><FaBookOpen></FaBookOpen> MANAGE CLASSES</NavLink></li>
                     <li><NavLink to="/dashboard/manage-users"><FaUsers></FaUsers> MANAGE USERS</NavLink></li>
+                    </>}
+                    <li><NavLink to="/dashboard/instructor-home"><FaHome></FaHome> INSTRUCTOR HOME</NavLink></li>
+                    <li><NavLink to="/dashboard/add-class"><FaBook></FaBook> ADD A CLASS</NavLink></li>
+                    <li><NavLink to="/dashboard/my-classes"><FaBookOpen></FaBookOpen> MY CLASSES</NavLink></li>
+                    
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> HOME</NavLink></li>
                     <li><NavLink to="/instructor"><FaUserTie></FaUserTie> INSTRUCTORS</NavLink></li>
