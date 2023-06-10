@@ -13,7 +13,7 @@ const ManageUsers = () => {
 
     return (
         <div className="mb-20 px-10">
-            <SectionTitle subHeading="Users" heading="All Users">
+            <SectionTitle subHeading="Users" heading="Manage All Users">
             </SectionTitle>
             <div className="overflow-x-auto">
                 <h2 className="text-xl font-semibold">Total Users: {users.length}</h2>
