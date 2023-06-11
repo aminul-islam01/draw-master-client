@@ -13,9 +13,9 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
-        {user ? <li onClick={logoutUser}><Link to="/">Logout</Link></li>
-            : <li><Link to="/login">Login</Link></li>}
+        {user ? <><li><Link to="/dashboard">Dashboard</Link></li>
+        <li onClick={logoutUser}><Link to="/">Logout</Link></li>
+        </> : <li><Link to="/login">Login</Link></li>}
     </>
 
     return (
@@ -41,7 +41,7 @@ const Navbar = () => {
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
                         <div className="indicator">
                            <FaShoppingCart className="text-2xl"></FaShoppingCart>
-                            <span className="badge badge-sm indicator-item">{selectClasses.length}</span>
+                            <span className="badge badge-sm indicator-item">{selectClasses?.length || 0}</span>
                         </div>
                     </label>
 

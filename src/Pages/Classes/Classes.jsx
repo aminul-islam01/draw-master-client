@@ -4,10 +4,14 @@ import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UseAuth from "../../hooks/UseAuth";
+import UseClasses from "../../hooks/UseClasses";
+import { useNavigate } from "react-router-dom";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     const {user} = UseAuth();
+    const [ , refetch] = UseClasses()
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/classes')
@@ -19,7 +23,7 @@ const Classes = () => {
         const { _id, className, image, price} = singleClass;
         const selectedClass = {id: _id, email: user?.email, image, className, price}
 
-        axios.post('http://localhost:5000/cart-classes', selectedClass)
+       {user? axios.post('http://localhost:5000/cart-classes', selectedClass)
         .then(data => {
             if(data.data.insertedId) {
                 Swal.fire({
@@ -28,6 +32,7 @@ const Classes = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                refetch()
             }else{
                 Swal.fire({
                     icon: 'error',
@@ -35,7 +40,7 @@ const Classes = () => {
                     text: 'This class already selected!',
                   })
             }
-        })
+        }): navigate('/login')}
     }
 
     return (
