@@ -1,15 +1,48 @@
-import { useEffect } from "react";
-import { useState } from "react";
+
+import Swal from "sweetalert2";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import UseAxios from "../../../hooks/UseAxios";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageUsers = () => {
-    const [users, setUsers] = useState([]);
+    const [axiosSecure] = UseAxios();
+    const { refetch, data: users = []} = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await axiosSecure('/all-users')
+            return res.data;
+        }
+    })
 
-    useEffect(() => {
-        fetch('http://localhost:5000/all-users')
-        .then(res => res.json())
-        .then(data => setUsers(data))
-    }, [])
+    const CreateAdmin = (user) => {
+        axiosSecure.patch('/user/admin', user)
+        .then(res => {
+           if(res.status === 200) {
+            refetch()
+            Swal.fire({
+                icon: 'success',
+                title: 'Create admin successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+           }
+        })
+    }
+
+    const CreateInstructor = (user) => {
+        axiosSecure.patch('/user/instructor', user)
+        .then(res => {
+           if(res.status === 200) {
+            refetch()
+            Swal.fire({
+                icon: 'success',
+                title: 'Create instructor successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+           }
+        })
+    }
 
     return (
         <div className="mb-20 px-10">
@@ -45,10 +78,10 @@ const ManageUsers = () => {
                                 <td>{user.email}</td>
                                 <td className="font-bold">{user.role}</td>
                                 <td>
-                                    <button className="btn btn-primary btn-xs" disabled={user.role === 'instructor' || user.role === 'admin'}>Instructor</button>
+                                    <button onClick={()=> CreateInstructor(user)} className="btn btn-primary btn-xs" disabled={user.role === 'instructor' || user.role === 'admin'}>Instructor</button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-primary btn-xs" disabled={user.role === 'admin'}>Admin</button>
+                                    <button onClick={()=> CreateAdmin(user)} className="btn btn-primary btn-xs" disabled={user.role === 'admin'}>Admin</button>
                                 </td>
                             </tr>
                         )}
