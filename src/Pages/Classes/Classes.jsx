@@ -1,15 +1,42 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import axios from "axios";
+import Swal from "sweetalert2";
+import UseAuth from "../../hooks/UseAuth";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
+    const {user} = UseAuth();
 
     useEffect(() => {
         fetch('http://localhost:5000/classes')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])
+
+    const handleSelect = (singleClass) => {
+        const { _id, className, image, price} = singleClass;
+        const selectedClass = {id: _id, email: user?.email, image, className, price}
+
+        axios.post('http://localhost:5000/cart-classes', selectedClass)
+        .then(data => {
+            if(data.data.insertedId) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'class selected success fully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'This class already selected!',
+                  })
+            }
+        })
+    }
 
     return (
         <div className="mb-20 mt-28">
@@ -45,7 +72,7 @@ const Classes = () => {
                                 <td>{singleClass.availableSeat}</td>
                                 <td>$ {singleClass.price}</td>
                                 <td>
-                                    <button className="btn btn-primary btn-xs">Select</button>
+                                    <button onClick={() => handleSelect(singleClass)} className="btn btn-primary btn-xs">Select</button>
                                 </td>
                             </tr>
                         )}

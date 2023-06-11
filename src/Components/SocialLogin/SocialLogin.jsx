@@ -24,7 +24,7 @@ const SocialLogin = () => {
 
                 Swal.fire({
                     icon: 'success',
-                    title: 'User signUp success fully',
+                    title: 'User register success fully',
                     showConfirmButton: false,
                     timer: 1500
                 })
