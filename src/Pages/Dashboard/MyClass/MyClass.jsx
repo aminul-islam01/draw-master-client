@@ -5,6 +5,7 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 
 const MyClass = () => {
     const {user} = UseAuth();
+    
     const [instructorClasses, setInstructorClasses] = useState([]);
     fetch(`http://localhost:5000/instructors-classes?email=${user?.email}`)
     .then(res => res.json())

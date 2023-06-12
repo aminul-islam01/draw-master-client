@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import UseAxios from "../../../hooks/UseAxios";
 import UseClasses from "../../../hooks/UseClasses";
+import { Link } from "react-router-dom";
 
 
 const SelectedClass = () => {
@@ -17,24 +18,24 @@ const SelectedClass = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/delete-classes/${id}`)
-                .then(res => {
-                    refetch()
-                    if(res.status === 200) {
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                          )
-                    }
-                })
+                    .then(res => {
+                        refetch()
+                        if (res.status === 200) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
             }
-          })
-        
+        })
+
     }
-   
+
 
     return (
         <div className="mb-20 px-5">
@@ -47,7 +48,7 @@ const SelectedClass = () => {
                         <tr>
                             <th>#</th>
                             <th>Image</th>
-                            <th>Class Name</th>                                           
+                            <th>Class Name</th>
                             <th>Price</th>
                             <th>Action</th>
                             <th>Action</th>
@@ -70,7 +71,9 @@ const SelectedClass = () => {
                                     <button onClick={() => handleDelete(selectedClass._id)} className="btn btn-primary btn-xs">Delete</button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-primary btn-xs">Pay</button>
+                                    <Link to={`/dashboard/payment/${selectedClass._id}`}>
+                                        <button className="btn btn-primary btn-xs">Pay</button>
+                                    </Link>
                                 </td>
                             </tr>
                         )}

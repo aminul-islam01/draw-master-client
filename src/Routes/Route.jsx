@@ -12,6 +12,7 @@ import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import MyClass from "../Pages/Dashboard/MyClass/MyClass";
 import PrivateRoute from "./PrivateRoute";
 import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,11 @@ const router = createBrowserRouter([
       {
         path: "my-selected-classes",
         element: <SelectedClass></SelectedClass>
+      },
+      {
+        path: "payment/:id",
+        element: <Payment></Payment>,
+        loader: ({params}) => fetch(`http://localhost:5000/card-class/${params.id}`)
       }
     ]
   }
