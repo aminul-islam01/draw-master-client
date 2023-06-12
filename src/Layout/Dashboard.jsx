@@ -22,7 +22,7 @@ const Dashboard = () => {
                     <li><NavLink to="/dashboard/manage-classes"><FaBookOpen></FaBookOpen> MANAGE CLASSES</NavLink></li>
                     <li><NavLink to="/dashboard/manage-users"><FaUsers></FaUsers> MANAGE USERS</NavLink></li>
                     </>}
-                    {users.role === 'instructor' && <><li><NavLink to="/dashboard/instructor-home"><FaHome></FaHome> INSTRUCTOR HOME</NavLink></li>
+                    {users.role === 'instructor' || <><li><NavLink to="/dashboard/instructor-home"><FaHome></FaHome> INSTRUCTOR HOME</NavLink></li>
                     <li><NavLink to="/dashboard/add-class"><FaBook></FaBook> ADD A CLASS</NavLink></li>
                     <li><NavLink to="/dashboard/my-classes"><FaBookOpen></FaBookOpen> MY CLASSES</NavLink></li>
                     </>}

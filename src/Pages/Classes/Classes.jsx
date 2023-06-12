@@ -1,29 +1,30 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
-import axios from "axios";
 import Swal from "sweetalert2";
 import UseAuth from "../../hooks/UseAuth";
 import UseClasses from "../../hooks/UseClasses";
 import { useNavigate } from "react-router-dom";
+import UseAxios from "../../hooks/UseAxios";
+import axios from "axios";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     const {user} = UseAuth();
-    const [ , refetch] = UseClasses()
+    const [ , refetch] = UseClasses();
+    const [axiosSecure] = UseAxios();
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
-            .then(res => res.json())
-            .then(data => setClasses(data))
-    }, [])
+        axios('http://localhost:5000/approved-classes')
+        .then(res => setClasses(res.data))    
+    }, [axiosSecure])
 
     const handleSelect = (singleClass) => {
         const { _id, className, image, price} = singleClass;
         const selectedClass = {id: _id, email: user?.email, image, className, price}
 
-       {user? axios.post('http://localhost:5000/cart-classes', selectedClass)
+       {user? axiosSecure.post('/cart-classes', selectedClass)
         .then(data => {
             if(data.data.insertedId) {
                 Swal.fire({
@@ -77,7 +78,7 @@ const Classes = () => {
                                 <td>{singleClass.availableSeat}</td>
                                 <td>$ {singleClass.price}</td>
                                 <td>
-                                    <button onClick={() => handleSelect(singleClass)} className="btn btn-primary btn-xs">Select</button>
+                                    <button onClick={() => handleSelect(singleClass)} className="btn btn-primary btn-xs" disabled={singleClass.availableSeat === 0}>Select</button>
                                 </td>
                             </tr>
                         )}

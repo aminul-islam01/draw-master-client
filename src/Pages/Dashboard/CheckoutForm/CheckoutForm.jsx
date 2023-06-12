@@ -17,7 +17,7 @@ const CheckoutForm = ({ paymentClassData }) => {
     const [transactionId, setTransactionId] = useState();
     const [processing, setProcessing] = useState(false);
 
-    const {price} = paymentClassData;
+    const {price, _id, id} = paymentClassData;
     const totalPrice = parseFloat(price.toFixed(2))
 
     useEffect(() => {
@@ -79,11 +79,12 @@ const CheckoutForm = ({ paymentClassData }) => {
                 email: user?.email, 
                 transactionId: paymentIntent.id,
                 price,
+                classId: id,
                 data: new Date(),
                 status: "service pending",
             }
 
-            axiosSecure.post('/payments', payment)
+            axiosSecure.post(`/payments/${_id}`, payment)
             .then(res => {
                 if(res.data.insertedId){
                     Swal.fire({

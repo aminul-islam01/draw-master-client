@@ -1,16 +1,20 @@
 import { useState } from "react";
 import UseAuth from "../../../hooks/UseAuth";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import UseAxios from "../../../hooks/UseAxios";
+import { useEffect } from "react";
 
 
 const MyClass = () => {
     const {user} = UseAuth();
+    const [axiosSecure] = UseAxios();
     
     const [instructorClasses, setInstructorClasses] = useState([]);
-    fetch(`http://localhost:5000/instructors-classes?email=${user?.email}`)
-    .then(res => res.json())
-    .then(data => setInstructorClasses(data))
-
+    useEffect(()=> {
+        axiosSecure(`/instructors-classes?email=${user?.email}`)
+        .then(res => setInstructorClasses(res.data))
+    }, [axiosSecure, user])
+   
     return (
         <div className="mb-20 px-5">
             <SectionTitle subHeading="Classes" heading="My All Classes">
