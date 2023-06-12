@@ -9,7 +9,7 @@ const Payment = () => {
     const paymentClassData = useLoaderData();
     return (
         <Elements stripe={stripePromise}>
-            <CheckoutForm paymentClassData={paymentClassData} />
+            <CheckoutForm paymentClassData={paymentClassData}/>
         </Elements>
     );
 };
