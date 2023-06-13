@@ -5,11 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState(false);
+    const [show, setShow] = useState(true);
+    const [confirmShow, setConfirmShow] = useState(true)
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -83,25 +86,33 @@ const Register = () => {
                                 <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" />
                                 {errors.email && <p className="text-red-700">email is required</p>}
                             </div>
-                            <div className="form-control mb-3">
+                            <div className="form-control relative mb-3">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" {...register('password', {
+                                <input type={show? 'password': 'text'} {...register('password', {
                                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
                                     minLength: 6,
                                     maxLength: 15,
                                     required: true
                                 })} placeholder="password" className="input input-bordered" />
+                                {show ? <FaEye onClick={() => setShow(!show)}
+                                className='absolute right-4 top-12'></FaEye>
+                                : <FaEyeSlash onClick={() => setShow(!show)}
+                                 className='absolute right-4 top-12'></FaEyeSlash>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-700">password must be at less one Capital letter and one special character</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-700">password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-700">password must be less then 15 characters</p>}
                             </div>
-                            <div className="form-control mb-3">
+                            <div className="form-control relative mb-3">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="text" {...register('confirmPassword', { required: true })} placeholder="password" className="input input-bordered" />
+                                <input type={confirmShow? 'password': 'text'} {...register('confirmPassword', { required: true })} placeholder="password" className="input input-bordered" />
+                                {confirmShow ? <FaEye onClick={() => setConfirmShow(!confirmShow)}
+                                className='absolute right-4 top-12'></FaEye>
+                                : <FaEyeSlash onClick={() => setConfirmShow(!confirmShow)}
+                                 className='absolute right-4 top-12'></FaEyeSlash>}
                                 {error && <p className="text-red-700">password and confirm password are not match</p>}
                             </div>
                             <div className="form-control mt-6">

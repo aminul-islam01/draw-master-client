@@ -3,17 +3,23 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import UseClasses from "../../hooks/UseClasses";
+import UseRole from "../../hooks/UseRole";
 
 
 const Navbar = () => {
     const { user, logoutUser } = useContext(AuthContext);
     const [selectClasses] = UseClasses();
+    const [users] = UseRole();
+    
 
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        {user ? <><li><Link to="/dashboard">Dashboard</Link></li>
+        {user ? <><li><Link to={
+            users.role ==='instructor' && "/dashboard/instructor-home" || 
+            users.role ==='admin' && "/dashboard/admin-home" ||
+            users.role ==='student' && "/dashboard/student-home"}>Dashboard</Link></li>
         <li onClick={logoutUser}><Link to="/">Logout</Link></li>
         </> : <li><Link to="/login">Login</Link></li>}
     </>
@@ -38,12 +44,12 @@ const Navbar = () => {
             </div>
             {user &&
                 <div className="ms-auto">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle">
+                   {users.role === 'student' && <label tabIndex={0} className="btn btn-ghost btn-circle">
                         <div className="indicator">
                            <FaShoppingCart className="text-2xl"></FaShoppingCart>
                             <span className="badge badge-sm indicator-item">{selectClasses?.length || 0}</span>
                         </div>
-                    </label>
+                    </label>}
 
                     <div className="ms-3 w-10 h-10 overflow-hidden bg-slate-50 rounded-full">
                         <img src={user?.photoURL} />

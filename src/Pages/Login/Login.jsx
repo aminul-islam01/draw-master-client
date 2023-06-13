@@ -6,6 +6,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import { Helmet } from 'react-helmet';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
@@ -13,6 +14,7 @@ const Login = () => {
     const { loginUser } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const [show, setShow] = useState(true);
 
     const from = location.state?.from?.pathname || "/";
 
@@ -51,7 +53,7 @@ const Login = () => {
     }
 
     return (
-        <div className='my-32 bg-gray-100'>
+        <div className='py-32 bg-gray-100'>
             <Helmet><title>Draw-master-classes | login</title></Helmet>
             <div className='md:w-1/2 p-10'>
                 <div className='bg-white p-5 shadow-xl rounded-md'>
@@ -64,11 +66,15 @@ const Login = () => {
                             <input type='email' {...register('email', { required: true })} placeholder="email" className="input input-bordered" />
                             {errors.email && <p className='text-red-600'>email is required.</p>}
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" {...register('password', { required: true })} placeholder="password" className="input input-bordered" />
+                            <input type={show? 'password': 'text'} {...register('password', { required: true })} placeholder="password" className="input input-bordered" />
+                            {show? <FaEye onClick={()=> setShow(!show)} 
+                            className='absolute right-4 top-12'></FaEye>
+                            : <FaEyeSlash onClick={()=> setShow(!show)} 
+                            className='absolute right-4 top-12'></FaEyeSlash>}
                             {errors.password && <p className='text-red-600'>password is required.</p>}
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

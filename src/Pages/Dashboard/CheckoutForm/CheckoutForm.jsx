@@ -81,7 +81,7 @@ const CheckoutForm = ({ paymentClassData }) => {
                 transactionId: paymentIntent.id,
                 price,
                 classId: _id,
-                data: new Date(),
+                date: new Date(),
                 status: "service pending",
             }
 

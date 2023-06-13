@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom";
 import UseAxios from "../../hooks/UseAxios";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import UseRole from "../../hooks/UseRole";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     const {user} = UseAuth();
+    const[users] = UseRole();
     const [ , refetch] = UseClasses();
     const [axiosSecure] = UseAxios();
     const navigate = useNavigate();
@@ -80,7 +82,7 @@ const Classes = () => {
                                 <td>{singleClass.availableSeat}</td>
                                 <td>$ {singleClass.price}</td>
                                 <td>
-                                    <button onClick={() => handleSelect(singleClass)} className="btn btn-primary btn-xs" disabled={singleClass.availableSeat === 0}>Select</button>
+                                    <button onClick={() => handleSelect(singleClass)} className="btn btn-primary btn-xs" disabled={singleClass.availableSeat === 0 || users.role === 'admin' || users.role === 'instructor'}>Select</button>
                                 </td>
                             </tr>
                         )}
