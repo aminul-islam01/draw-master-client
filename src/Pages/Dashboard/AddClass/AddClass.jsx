@@ -42,7 +42,7 @@ const AddClass = () => {
                             if (data.data.insertedId) {
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Added an item successfully',
+                                    title: 'Added a class successfully',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })

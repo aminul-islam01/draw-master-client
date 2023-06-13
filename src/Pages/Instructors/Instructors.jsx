@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet";
 
 
 const Instructors = () => {
@@ -13,6 +14,7 @@ const Instructors = () => {
 
     return (
         <div className="mb-20 mt-28">
+            <Helmet><title>Draw-master-classes | instructors</title></Helmet>
             <SectionTitle subHeading="Instructors" heading="All Instructors">
             </SectionTitle>
             <div className="overflow-x-auto">

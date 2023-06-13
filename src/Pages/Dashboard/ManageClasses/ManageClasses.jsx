@@ -3,9 +3,10 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import UseAxios from "../../../hooks/UseAxios";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const ManageClasses = () => {
-    const [feedbackClass, setFeedbackClass] = useState();
+    const [feedbackClass, setFeedbackClass] = useState('');
     const [axiosSecure] = UseAxios();
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['classes'],
@@ -45,8 +46,8 @@ const ManageClasses = () => {
     }
 
     const handleOpenModal = (feedback) => {
-        window.my_modal_4.showModal()
         setFeedbackClass(feedback)
+        window.my_modal_4.showModal()
     }
     const handleFeedback = event => {
         const form = event.target;
@@ -68,11 +69,10 @@ const ManageClasses = () => {
 
     return (
         <div className="mb-20 px-4">
-            {/* You can open the modal using ID.showModal() method */}
-            {/* <button className="btn" onClick={() => window.my_modal_4.showModal()}>open modal</button> */}
+            <Helmet><title>Draw-master-classes | dashboard-manage-classes</title></Helmet>
             <dialog id="my_modal_4" className="modal">
                 <form onSubmit={handleFeedback} method="dialog" className="modal-box w-11/12 max-w-5xl">
-                    <textarea className="w-full p-4 border-2 border-emerald-600" name="feedback" defaultValue={feedbackClass?.feedbac}></textarea>
+                    <textarea className="w-full p-4 border-2 border-emerald-600" name="feedback" defaultValue={feedbackClass?.feedback}></textarea>
                     
                     <div className="modal-action">
                         {/* if there is a button, it will close the modal */}

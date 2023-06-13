@@ -7,6 +7,7 @@ import UseClasses from "../../hooks/UseClasses";
 import { useNavigate } from "react-router-dom";
 import UseAxios from "../../hooks/UseAxios";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -46,12 +47,13 @@ const Classes = () => {
 
     return (
         <div className="mb-20 mt-28">
+            <Helmet><title>Draw-master-classes | classes</title></Helmet>
             <SectionTitle subHeading="Classes" heading="All Classes">
             </SectionTitle>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className="bg-amber-600 text-lg text-white">
+                    <thead className=" text-lg text-white">
                         <tr>
                             <th>#</th>
                             <th>Image</th>

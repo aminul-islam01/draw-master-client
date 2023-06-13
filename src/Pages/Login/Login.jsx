@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
@@ -51,6 +52,7 @@ const Login = () => {
 
     return (
         <div className='my-32 bg-gray-100'>
+            <Helmet><title>Draw-master-classes | login</title></Helmet>
             <div className='md:w-1/2 p-10'>
                 <div className='bg-white p-5 shadow-xl rounded-md'>
                     <form onSubmit={handleSubmit(handleLogin)} >

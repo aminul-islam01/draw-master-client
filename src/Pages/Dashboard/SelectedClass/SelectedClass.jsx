@@ -3,12 +3,15 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import UseAxios from "../../../hooks/UseAxios";
 import UseClasses from "../../../hooks/UseClasses";
 import { Link } from "react-router-dom";
+import UseAuth from "../../../hooks/UseAuth";
+import { Helmet } from "react-helmet";
 
 
 const SelectedClass = () => {
     const [selectClasses, refetch] = UseClasses();
     const [axiosSecure] = UseAxios();
-
+    const {user} = UseAuth();
+  
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -20,7 +23,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/delete-classes/${id}`)
+                axiosSecure.delete(`/delete-classes?id=${id}&email=${user?.email}`)
                     .then(res => {
                         refetch()
                         if (res.status === 200) {
@@ -39,6 +42,7 @@ const SelectedClass = () => {
 
     return (
         <div className="mb-20 px-5">
+            <Helmet><title>Draw-master-classes | dashboard-my-selected-classes</title></Helmet>
             <SectionTitle subHeading="Classes" heading="My Selected Classes">
             </SectionTitle>
             <div className="overflow-x-auto">

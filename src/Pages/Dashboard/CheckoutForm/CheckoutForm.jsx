@@ -5,6 +5,7 @@ import UseAxios from "../../../hooks/UseAxios";
 import UseAuth from "../../../hooks/UseAuth";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet";
 
 
 const CheckoutForm = ({ paymentClassData }) => {
@@ -17,7 +18,7 @@ const CheckoutForm = ({ paymentClassData }) => {
     const [transactionId, setTransactionId] = useState();
     const [processing, setProcessing] = useState(false);
 
-    const {price, _id, id} = paymentClassData;
+    const {price, _id} = paymentClassData;
     const totalPrice = parseFloat(price.toFixed(2))
 
     useEffect(() => {
@@ -79,7 +80,7 @@ const CheckoutForm = ({ paymentClassData }) => {
                 email: user?.email, 
                 transactionId: paymentIntent.id,
                 price,
-                classId: id,
+                classId: _id,
                 data: new Date(),
                 status: "service pending",
             }
@@ -101,6 +102,7 @@ const CheckoutForm = ({ paymentClassData }) => {
 
     return (
         <div className="bg-slate-100 h-full"> 
+        <Helmet><title>Draw-master-classes | dashboard-payment</title></Helmet>
             <SectionTitle subHeading="Payment" heading="Payment Now">
             </SectionTitle>
             <form onSubmit={handleSubmit} className="md:w-1/2  mx-auto bg-white">

@@ -3,20 +3,40 @@ import UseAuth from "../../../hooks/UseAuth";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import UseAxios from "../../../hooks/UseAxios";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const MyClass = () => {
-    const {user} = UseAuth();
+    const { user } = UseAuth();
     const [axiosSecure] = UseAxios();
-    
+    const [feedbackMessage, setFeedbackMessage] = useState('');
+
     const [instructorClasses, setInstructorClasses] = useState([]);
-    useEffect(()=> {
+    useEffect(() => {
         axiosSecure(`/instructors-classes?email=${user?.email}`)
-        .then(res => setInstructorClasses(res.data))
+            .then(res => setInstructorClasses(res.data))
     }, [axiosSecure, user])
-   
+
+
+    const showFeedback = feedback => {
+        if (feedback === '') {
+            feedback = 'No feedback'
+        }
+        setFeedbackMessage(feedback);
+        window.my_modal_3.showModal()
+    }
+
+
     return (
         <div className="mb-20 px-5">
+            <Helmet><title>Draw-master-classes | dashboard-my-classes</title></Helmet>
+            <dialog id="my_modal_3" className="modal">
+                <form method="dialog" className="modal-box">
+                    <button htmlFor="my-modal-3" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    <p className="py-4">{feedbackMessage}</p>
+                </form>
+            </dialog>
             <SectionTitle subHeading="Classes" heading="My All Classes">
             </SectionTitle>
             <div className="overflow-x-auto">
@@ -50,12 +70,14 @@ const MyClass = () => {
                                 <td>{instructorClass.availableSeat}</td>
                                 <td>{instructorClass.student}</td>
                                 <td>$ {instructorClass.price}</td>
-                                <td className={instructorClass.status === 'approved'? 'text-green-500': 'text-red-600'}>{instructorClass.status}</td>
+                                <td className={instructorClass.status === 'approved' ? 'text-green-500' : 'text-red-600'}>{instructorClass.status}</td>
                                 <td>
-                                    <button className="btn btn-primary btn-xs">Update</button>
+                                    <Link to={`/dashboard/update-class/${instructorClass._id}`}>
+                                        <button className="btn btn-primary btn-xs">Update</button>
+                                    </Link>
                                 </td>
                                 <td>
-                                    <button className="btn btn-primary btn-xs">Feedback</button>
+                                    <button onClick={() => showFeedback(instructorClass.feedback)} className="btn btn-primary btn-xs">Feedback</button>
                                 </td>
                             </tr>
                         )}

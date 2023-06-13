@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
@@ -52,6 +53,7 @@ const Register = () => {
 
     return (
         <div className="min-h-screen bg-base-200 py-32">
+            <Helmet><title>Draw-master-classes | register</title></Helmet>
             <div className="md:flex-row-reverse flex-col gap-10">
                 <div className="text-center md:w-1/2 lg:text-left">
                     {/* <img src={image} alt="" /> */}

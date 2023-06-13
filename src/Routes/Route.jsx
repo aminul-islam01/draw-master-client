@@ -13,6 +13,10 @@ import MyClass from "../Pages/Dashboard/MyClass/MyClass";
 import PrivateRoute from "./PrivateRoute";
 import SelectedClass from "../Pages/Dashboard/SelectedClass/SelectedClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
 
 const router = createBrowserRouter([
   {
@@ -52,11 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: "manage-classes",
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       },
       {
         path: "manage-users",
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       // Instructor routes 
       {
@@ -65,16 +69,24 @@ const router = createBrowserRouter([
       },
       {
         path: "add-class",
-        element: <AddClass></AddClass>
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+      },
+      {
+        path: "update-class/:id",
+        element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>
       },
       {
         path: "my-classes",
-        element: <MyClass></MyClass>
+        element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
       },
       // students route
       {
         path: "my-selected-classes",
         element: <SelectedClass></SelectedClass>
+      },
+      {
+        path: "my-enrolled-classes",
+        element: <EnrolledClass></EnrolledClass>
       },
       {
         path: "payment/:id",

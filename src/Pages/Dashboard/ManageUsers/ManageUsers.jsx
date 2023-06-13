@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import UseAxios from "../../../hooks/UseAxios";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const ManageUsers = () => {
     const [axiosSecure] = UseAxios();
@@ -46,6 +47,7 @@ const ManageUsers = () => {
 
     return (
         <div className="mb-20 px-10">
+            <Helmet><title>Draw-master-classes | dashboard-manage-users</title></Helmet>
             <SectionTitle subHeading="Users" heading="Manage All Users">
             </SectionTitle>
             <div className="overflow-x-auto">
