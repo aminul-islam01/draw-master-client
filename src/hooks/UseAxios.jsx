@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://draw-master-class-server.vercel.app',
 });
 
 const UseAxios = () => {

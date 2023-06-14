@@ -5,7 +5,7 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/popular-classes')
+        fetch('https://draw-master-class-server.vercel.app/popular-classes')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])

@@ -31,7 +31,7 @@ const Register = () => {
                     const registerUser = result.user;
                     updateUser(registerUser, name, image);
                     const user = { name, image, email, role: 'student' }
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://draw-master-class-server.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

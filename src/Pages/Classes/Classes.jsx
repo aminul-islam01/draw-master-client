@@ -19,7 +19,7 @@ const Classes = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios('http://localhost:5000/approved-classes')
+        axios('https://draw-master-class-server.vercel.app/approved-classes')
         .then(res => setClasses(res.data))    
     }, [axiosSecure])
 

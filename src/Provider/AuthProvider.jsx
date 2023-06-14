@@ -44,7 +44,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
 
             if(currentUser){
-                axios.post('http://localhost:5000/jsonwebtoken', {email: currentUser.email})
+                axios.post('https://draw-master-class-server.vercel.app/jsonwebtoken', {email: currentUser.email})
                 .then(data =>{
                     localStorage.setItem('access-token', data.data.token)
                     setLoading(false);

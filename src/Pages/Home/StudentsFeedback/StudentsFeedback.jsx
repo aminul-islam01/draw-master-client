@@ -13,7 +13,7 @@ const StudentsFeedback = () => {
     const [feedbacks, setFeedbacks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/student-feedback')
+        fetch('https://draw-master-class-server.vercel.app/student-feedback')
             .then(res => res.json())
             .then(data => setFeedbacks(data))
     }, [])

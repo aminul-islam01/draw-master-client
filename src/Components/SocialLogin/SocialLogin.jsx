@@ -14,7 +14,7 @@ const SocialLogin = () => {
             .then((result) => {
                 const loggedUser = result.user;
                 const user = { name: loggedUser?.displayName, image: loggedUser?.photoURL, email: loggedUser?.email, role: 'student' }
-                fetch('http://localhost:5000/users', {
+                fetch('https://draw-master-class-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

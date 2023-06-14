@@ -101,7 +101,7 @@ const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <Payment></Payment>,
-        loader: ({params}) => fetch(`http://localhost:5000/card-class/${params.id}`)
+        loader: ({params}) => fetch(`https://draw-master-class-server.vercel.app/card-class/${params.id}`)
       },
       {
         path: "payment-history",
