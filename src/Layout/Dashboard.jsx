@@ -8,7 +8,7 @@ const Dashboard = () => {
   const [users] = UseRole();
 
     return (
-        <div className="drawer lg:drawer-open container mx-auto bg-slate-50">
+        <div className="drawer lg:drawer-open container mx-auto">
             <Helmet><title>Draw-master-classes | dashboard</title></Helmet>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">

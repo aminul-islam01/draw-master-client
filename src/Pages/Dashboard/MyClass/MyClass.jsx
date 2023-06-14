@@ -20,10 +20,11 @@ const MyClass = () => {
 
 
     const showFeedback = feedback => {
-        if (feedback === '') {
-            feedback = 'No feedback'
+        if (feedback === undefined) {
+            setFeedbackMessage('No feedback')
+        }else{
+            setFeedbackMessage(feedback);
         }
-        setFeedbackMessage(feedback);
         window.my_modal_3.showModal()
     }
 
