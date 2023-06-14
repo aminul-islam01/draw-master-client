@@ -47,7 +47,7 @@ const Navbar = () => {
                 <div className="ms-auto">
                    {users.role === 'student' && <label tabIndex={0} className="btn btn-ghost btn-circle">
                         <div className="indicator">
-                           <FaShoppingCart className="text-2xl"></FaShoppingCart>
+                           <Link to="/dashboard/my-selected-classes"><FaShoppingCart className="text-2xl"></FaShoppingCart></Link>
                             <span className="badge badge-sm indicator-item">{selectClasses?.length || 0}</span>
                         </div>
                     </label>}

@@ -42,7 +42,7 @@ const MyClass = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className="bg-amber-600 text-lg text-white">
+                    <thead className="bg-amber-600 text-md text-white">
                         <tr>
                             <th>#</th>
                             <th>Image</th>

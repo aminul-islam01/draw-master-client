@@ -80,7 +80,7 @@ const CheckoutForm = ({ paymentClassData }) => {
                 email: user?.email, 
                 transactionId: paymentIntent.id,
                 price,
-                classId: _id,
+                id: _id,
                 date: new Date(),
                 status: "service pending",
             }

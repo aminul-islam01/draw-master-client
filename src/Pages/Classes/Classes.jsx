@@ -37,11 +37,17 @@ const Classes = () => {
                     timer: 1500
                 })
                 refetch()
-            }else{
+            }else if(data.data === 'selected'){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'This class already selected!',
+                  })
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Already enrolled this class!',
                   })
             }
         }): navigate('/login')}

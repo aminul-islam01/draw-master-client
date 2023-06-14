@@ -30,7 +30,8 @@ const SocialLogin = () => {
                 })
                 navigate('/')
 
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage)
             });

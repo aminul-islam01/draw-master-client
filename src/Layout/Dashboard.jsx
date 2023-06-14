@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaBookOpen, FaHome, FaUserTie, FaUsers,  } from 'react-icons/fa';
+import { FaBook, FaBookOpen, FaHistory, FaHome, FaUserTie, FaUsers,  } from 'react-icons/fa';
 import UseRole from "../hooks/UseRole";
 import { Helmet } from "react-helmet";
 
@@ -28,9 +28,10 @@ const Dashboard = () => {
                     <li><NavLink to="/dashboard/add-class"><FaBook></FaBook> ADD A CLASS</NavLink></li>
                     <li><NavLink to="/dashboard/my-classes"><FaBookOpen></FaBookOpen> MY CLASSES</NavLink></li>
                     </>}
-                   {users.role === 'student' && <><li><NavLink to="/dashboard/my-selected-classes"><FaBookOpen></FaBookOpen> MY SELECTED CLASSES</NavLink></li>
-                    <li><NavLink to="/dashboard/my-enrolled-classes"><FaBookOpen></FaBookOpen> MY ENROLLED CLASSES</NavLink></li>
-                    <li><NavLink to="/dashboard/payment-history"><FaBookOpen></FaBookOpen> MY PAYMENT HISTORY</NavLink></li> 
+                   {users.role === 'student' && <><li><NavLink to="/dashboard/student-home"><FaHome></FaHome> STUDENT HOME</NavLink></li>
+                   <li><NavLink to="/dashboard/my-selected-classes"><FaBookOpen></FaBookOpen> MY SELECTED CLASSES</NavLink></li>
+                    <li><NavLink to="/dashboard/my-enrolled-classes"><FaBook></FaBook> MY ENROLLED CLASSES</NavLink></li>
+                    <li><NavLink to="/dashboard/payment-history"><FaHistory></FaHistory> MY PAYMENT HISTORY</NavLink></li> 
                     </>}
                     
                     <div className="divider"></div>
