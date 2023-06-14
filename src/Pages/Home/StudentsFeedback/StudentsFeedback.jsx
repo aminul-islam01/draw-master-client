@@ -13,12 +13,11 @@ const StudentsFeedback = () => {
     const [feedbacks, setFeedbacks] = useState([]);
 
     useEffect(() => {
-        fetch('studentsFeedback.json')
+        fetch('http://localhost:5000/student-feedback')
             .then(res => res.json())
             .then(data => setFeedbacks(data))
     }, [])
-    console.log(feedbacks)
-
+    
     return (
         <div className="md:w-1/2 mx-auto bg-slate-50">
             <SectionTitle subHeading="feedback" heading="Students Feedback">
@@ -32,7 +31,7 @@ const StudentsFeedback = () => {
                 className="m-10"
             >
                 {feedbacks.map(feedback =>
-                    <SwiperSlide key={feedback.id} className="py-10 px-16">
+                    <SwiperSlide key={feedback._id} className="py-10 px-16">
                         <p className="text-center">{feedback.comment}</p>
                         <div className="flex justify-evenly items-center mt-4">
                             <h3 className="text-xl font-semibold">{feedback.name}</h3>

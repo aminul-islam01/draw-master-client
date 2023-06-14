@@ -18,11 +18,16 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import Error from "../Pages/Error/Error";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
+import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
         {
             path: "/",
@@ -53,7 +58,7 @@ const router = createBrowserRouter([
       // admin routes 
       {
         path: "admin-home",
-        element: "home"
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
       },
       {
         path: "manage-classes",
@@ -66,7 +71,7 @@ const router = createBrowserRouter([
       // Instructor routes 
       {
         path: "instructor-home",
-        element: 'instructor home'
+        element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
       },
       {
         path: "add-class",
@@ -81,6 +86,10 @@ const router = createBrowserRouter([
         element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
       },
       // students route
+      {
+        path: "student-home",
+        element: <StudentHome></StudentHome>
+      },
       {
         path: "my-selected-classes",
         element: <SelectedClass></SelectedClass>

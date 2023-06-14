@@ -1,55 +1,47 @@
 [
   {
-    "id": 1,
     "name": "John Doe",
     "course": "Introduction to Drawing Fundamentals",
     "rating": 4.5,
     "comment": "I really enjoyed the course and learned a lot. The instructor was knowledgeable and provided helpful feedback on my work. Highly recommended!"
   },
   {
-    "id": 2,
     "name": "Jane Smith",
     "course": "Portrait Drawing",
     "rating": 5,
     "comment": "The portrait drawing course exceeded my expectations. The techniques taught were invaluable, and I saw a significant improvement in my skills. The instructor was fantastic!"
   },
   {
-    "id": 3,
     "name": "Alex Johnson",
     "course": "Digital Art: Introduction to Drawing on Tablets",
     "rating": 4,
     "comment": "As someone new to digital art, this course was a perfect starting point. The step-by-step instructions were clear, and I gained confidence in using drawing tablets. The course materials were excellent."
   },
   {
-    "id": 4,
     "name": "Sarah Thompson",
     "course": "Mixed Media Masterpieces",
     "rating": 5,
     "comment": "This course opened up a whole new world of creativity for me. I loved experimenting with different materials and techniques. The instructor's passion for mixed media art was contagious!"
   },
   {
-    "id": 5,
     "name": "Michael Chen",
     "course": "Ink and Palette",
     "rating": 4.8,
     "comment": "The Ink and Palette course was a fantastic experience. I learned various ink techniques and explored a wide range of color palettes. The instructor's guidance was invaluable, and I can't wait to apply these techniques to my own artwork."
   },
   {
-    "id": 6,
     "name": "Emily Wilson",
     "course": "Watercolor Landscapes",
     "rating": 4.2,
     "comment": "I thoroughly enjoyed the Watercolor Landscapes course. The instructor's demonstrations were inspiring, and the step-by-step approach made it easy to follow along. I feel more confident in my watercolor skills now!"
   },
   {
-    "id": 7,
     "name": "David Rodriguez",
     "course": "Expressive Charcoal Drawing",
     "rating": 4.7,
     "comment": "The Expressive Charcoal Drawing course was a game-changer for me. I learned how to create depth and emotion in my drawings using charcoal. The instructor's feedback helped me refine my techniques. Highly recommended for anyone interested in charcoal art!"
   },
   {
-    "id": 8,
     "name": "Olivia Lee",
     "course": "Doodle Art Workshop",
     "rating": 4.5,

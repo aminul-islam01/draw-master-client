@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import UseClasses from "../../hooks/UseClasses";
@@ -13,13 +13,13 @@ const Navbar = () => {
     
 
     const navItems = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/instructor">Instructors</Link></li>
-        <li><Link to="/classes">Classes</Link></li>
-        {user ? <><li><Link to={
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/instructor">Instructors</NavLink></li>
+        <li><NavLink to="/classes">Classes</NavLink></li>
+        {user ? <><li><NavLink to={
             users.role ==='instructor' && "/dashboard/instructor-home" || 
             users.role ==='admin' && "/dashboard/admin-home" ||
-            users.role ==='student' && "/dashboard/student-home"}>Dashboard</Link></li>
+            users.role ==='student' && "/dashboard/student-home"}>Dashboard</NavLink></li>
         <li onClick={logoutUser}><Link to="/">Logout</Link></li>
         </> : <li><Link to="/login">Login</Link></li>}
     </>
@@ -35,10 +35,11 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link className="font-bold">DRAW MASTER CLASS</Link>
+                <Link to="/" className="font-bold text-green-500">
+                <span className="italic text-red-500">DRAW </span> MASTER CLASS</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 font-bold">
+                <ul className="menu menu-horizontal px-1 font-bold Navbar">
                     {navItems}
                 </ul>
             </div>
