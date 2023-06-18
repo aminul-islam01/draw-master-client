@@ -75,7 +75,7 @@ const Navbar = () => {
                         </div>
                     </label>}
 
-                    <div className="ms-3 w-10 h-10 overflow-hidden bg-slate-50 rounded-full">
+                    <div className="ms-3 w-10 h-10 overflow-hidden bg-slate-50 rounded-full flex items-center">
                         <img src={user?.photoURL} />
                     </div>
                 </div>
