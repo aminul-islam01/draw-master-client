@@ -15,6 +15,7 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [show, setShow] = useState(true);
+    const [err, setError] = useState('');
 
     const from = location.state?.from?.pathname || "/";
 
@@ -39,7 +40,8 @@ const Login = () => {
                     })
                 })
                 .catch(error => {
-                    console.log(error)
+                    setError(error.message)
+
                 })
         }
         else {
@@ -51,7 +53,7 @@ const Login = () => {
             })
         }
     }
-
+   
     return (
         <div className='py-32 bg-gray-100'>
             <Helmet><title>Draw-master-classes | login</title></Helmet>
@@ -70,12 +72,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type={show? 'password': 'text'} {...register('password', { required: true })} placeholder="password" className="input input-bordered" />
+                            <input type={show? 'password': 'text'} {...register('password')} placeholder="password" className="input input-bordered" required/>
                             {show? <FaEye onClick={()=> setShow(!show)} 
                             className='absolute right-4 top-12'></FaEye>
                             : <FaEyeSlash onClick={()=> setShow(!show)} 
                             className='absolute right-4 top-12'></FaEyeSlash>}
-                            {errors.password && <p className='text-red-600'>password is required.</p>}
+                            {err && <p className='text-red-600'>{err}</p>}
+                            {/* <p className='text-red-600'>{err}</p> */}
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

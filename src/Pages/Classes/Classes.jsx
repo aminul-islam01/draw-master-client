@@ -61,7 +61,7 @@ const Classes = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className=" text-lg text-white">
+                    <thead className=" bg-amber-600 text-white text-lg">
                         <tr>
                             <th>#</th>
                             <th>Image</th>
